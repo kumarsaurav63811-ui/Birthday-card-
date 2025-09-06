@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      font-family: 'Comic Sans MS', cursive;
+      overflow: hidden;
+    }
+
+    .card {
+      text-align: center;
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .card h1 {
+      font-size: 2.5rem;
+      color: #e91e63;
+      margin-bottom: 10px;
+      animation: bounce 2s infinite;
+    }
+
+    .card p {
+      font-size: 1.2rem;
+      color: #333;
+      margin-top: 10px;
+      animation: fadeInUp 2s ease-in-out;
+    }
+
+    /* Floating balloons */
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 60px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: red;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .balloon::after {
+      content: "";
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      width: 2px;
+      height: 40px;
+      background: #555;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-400px) rotate(10deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🎉 Happy Birthday My Dear Friend 💖</h1>
+    <p>🎂 May your special day be filled with joy, love & laughter 🎂</p>
+    <p>💐 Sending you hugs, smiles & endless blessings 💐</p>
+  </div>
+
+  <!-- Balloons -->
+  <div class="balloon" style="left: 10%; background: #ff4d6d; animation-delay: 0s;"></div>
+  <div class="balloon" style="left: 30%; background: #ffd166; animation-delay: 2s;"></div>
+  <div class="balloon" style="left: 50%; background: #06d6a0; animation-delay: 4s;"></div>
+  <div class="balloon" style="left: 70%; background: #118ab2; animation-delay: 6s;"></div>
+  <div class="balloon" style="left: 90%; background: #9b5de5; animation-delay: 3s;"></div>
+
+  <script>
+    // Add confetti effect 🎊
+    function createConfetti() {
+      const confetti = document.createElement("div");
+      confetti.innerHTML = "✨";
+      confetti.style.position = "absolute";
+      confetti.style.fontSize = Math.random() * 20 + 10 + "px";
+      confetti.style.left = Math.random() * window.innerWidth + "px";
+      confetti.style.top = "-20px";
+      confetti.style.animation = "fall 5s linear forwards";
+      document.body.appendChild(confetti);
+      setTimeout(() => confetti.remove(), 5000);
+    }
+
+    setInterval(createConfetti, 300);
+
+    // Falling confetti animation
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes fall {
+        to {
+          transform: translateY(${window.innerHeight}px) rotate(360deg);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
